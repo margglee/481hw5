@@ -1,0 +1,13 @@
+#!/bin/bash
+
+TEST="wireworld-original.c"
+cat $TEST > "guff.c"
+for i in $*; do
+	cat "patch.$i" | patch -p0 "guff.c"
+done
+gcc -c "guff.c"
+if [ $? -ne 0 ]; then
+	#echo "interesting"
+	exit 1
+fi
+exit 0
