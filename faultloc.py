@@ -14,11 +14,14 @@ def main():
         if (mPass):
             #print(sys.argv[i])
             with open(sys.argv[i]) as file:
-                line = file.readline()
+                line = file.readline().strip()
+                #print(line)
                 while (line):
-                    line = file.readline()
-                    r = re.findall('([0-9]+\:\s[0-9]+)\:', line)
+                    #print("HERE")
+                    #r = re.findall('\s([0-9]+\:\s[0-9]+)\:', line)
+                    r = re.findall('([0-9]+:\s+[0-9]+)', line)
                     if len(r) > 0:
+                        #print("here")
                         r2 = r[0].split(":")
                         #numRun = int(r2[0])
                         lineNum = r2[1].strip()
@@ -27,15 +30,19 @@ def main():
                             lineDict[lineNum][0] += 1
                         else:
                             lineDict[lineNum] = [1, 0]
+                    line = file.readline().strip()
+                    #print(line)
+                    
                         
         if (mFail):
             totalFail += 1
             #print(sys.argv[i])
             with open(sys.argv[i]) as file:
-                line = file.readline()
+                line = file.readline().strip()
+                #print(line)
                 while (line):
-                    line = file.readline()
-                    r = re.findall('([0-9]+\:\s[0-9]+)\:', line)
+                    #r = re.findall('([0-9]+\:\s[0-9]+)\:', line)
+                    r = re.findall('([0-9]+:\s+[0-9]+)', line)
                     if len(r) > 0:
                         r2 = r[0].split(":")
                         #numRun = int(r2[0])
@@ -45,7 +52,8 @@ def main():
                             lineDict[lineNum][1] += 1
                         else:
                             lineDict[lineNum] = [0, 1]
-
+                    line = file.readline().strip()
+    #print(lineDict)
     for k in lineDict.keys():
         ochiaiVal = lineDict[k][1]/math.sqrt(totalFail * (lineDict[k][0] + lineDict[k][1]))
         ochiaiLst.append((int(k),ochiaiVal))

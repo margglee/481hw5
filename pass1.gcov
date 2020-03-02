@@ -1,0 +1,31 @@
+        -:    0:Source:prog.cpp
+        -:    0:Graph:prog.gcno
+        -:    0:Data:prog.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <fstream>
+        -:    3:
+        -:    4:using namespace std;
+        -:    5:
+        1:    6:int mid(int x, int y, int z) {
+        -:    7:	int m;
+        1:    8:	m = z;
+        1:    9:	if(y < z) {
+        1:   10:		if(x < y) m = y;
+    #####:   11:		else if(x < z) m = y;
+        1:   12:	} else {
+    #####:   13:		if(x > y) m = y;
+    #####:   14:		else if(x > z) m = x;
+        -:   15:	}
+        1:   16:	return m;
+        -:   17:}
+        -:   18:
+        1:   19:int main(int argc, char* argv[]) {
+        1:   20:	ifstream in;
+        1:   21:	in.open(argv[1]);
+        -:   22:	int x, y, z, m;
+        1:   23:	in >> x >> y >> z;
+        1:   24:	m = mid(x, y, z);
+        1:   25:	return 0;
+        1:   26:}
