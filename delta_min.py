@@ -15,7 +15,7 @@ def union(l1, l2):
 	return sorted(list(to_set(l1) | to_set(l2)))
 
 
-def dd(p, c):
+def dd(p, c, cov):
 	print("%s: dd(p=%s, c=%s)" % (sys.argv[0], p, c))
 	if len(c) <= 1:
 		return [c[0]]
@@ -24,13 +24,18 @@ def dd(p, c):
 	s1 = " ".join(str(i) for i in union(p, p1))
 	s2 = " ".join(str(i) for i in union(p, p2))
 	print("%s: calling %s %s" % (sys.argv[0], command, s1))
-	if os.system("%s %s" % (command, s1)):
-		return dd(p, p1)
+    res1 = float(os.system("%s %s" % (command, s1)))
+	if res1 > cov:
+        print(res1)
+		return dd(p, p1, res1)
 	print("%s: calling %s %s" % (sys.argv[0], command, s2))
-	if os.system("%s %s" % (command, s2)):
-		return dd(p, p2)
+    res2 = float(os.system("%s %s" % (command, s2)))
+	if res2 > cov:
+        print(res2)
+		return dd(p, p2, res2)
 	else:
-		return union(dd(union(p, p2), p1), dd(union(p, p1), p2))
+        print(cov)
+		return union(dd(union(p, p2), p1, cov), dd(union(p, p1), p2, cov))
 
 
 def main():
@@ -38,7 +43,7 @@ def main():
 	global command 
 	command = " ".join(sys.argv[2:])
 	c = list(range(0, size_n))
-	result = dd(list(), c)
+	result = dd(list(), c, 0)
 	print(result)
     
 
