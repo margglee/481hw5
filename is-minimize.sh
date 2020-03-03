@@ -13,4 +13,8 @@ do
 done
 rm *.gcda pngout.png
 rm junk.txt
+if [ ${BASH_REMATCH} == "23.02" ]; then 
+    exit 1
+fi
+exit 0
 #return coverage

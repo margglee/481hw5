@@ -24,17 +24,17 @@ def dd(p, c, cov):
 	s1 = " ".join(str(i) for i in union(p, p1))
 	s2 = " ".join(str(i) for i in union(p, p2))
 	print("%s: calling %s %s" % (sys.argv[0], command, s1))
-    res1 = float(os.system("%s %s" % (command, s1)))
+	res1 = float(os.system("%s %s" % (command, s1)))
 	if res1 > cov:
-        print(res1)
+		print(res1)
 		return dd(p, p1, res1)
 	print("%s: calling %s %s" % (sys.argv[0], command, s2))
-    res2 = float(os.system("%s %s" % (command, s2)))
+	res2 = float(os.system("%s %s" % (command, s2)))
 	if res2 > cov:
-        print(res2)
+		print(res2)
 		return dd(p, p2, res2)
 	else:
-        print(cov)
+		print(cov)
 		return union(dd(union(p, p2), p1, cov), dd(union(p, p1), p2, cov))
 
 
