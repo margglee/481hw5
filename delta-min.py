@@ -3,20 +3,21 @@
 import sys
 import os
 
-
 def is_interesting(l):
-    cov = 0
-    sum = 0
-    for i in range(0, 31881):
-        for test in l:
-            cov = cov or x[test].get(i, 0)
-        if cov == 1:
-            sum++
-        cov = 0
-    if round(sum/10606, 2) >= 37.97
-        return 1
-
-    return 0
+	cov = 0
+	sum = 0
+	for i in range(0, 31881):
+		for test in l:
+			r = dataDict[test].get(i, 0)
+			cov = cov or r
+		if cov == 1:
+			sum += 1
+		cov = 0
+	print(sum)
+	if round(sum/10606 * 100, 2) >= 23.02:
+		print(sum/10606 * 100)
+		return 1
+	return 0
 
 
 def to_set(data):
@@ -36,8 +37,8 @@ def dd(p, c):
 		return [c[0]]
 	p1 = c[:len(c)//2]
 	p2 = c[len(c)//2:]
-	l1 = union(p, p1))
-	l2 = union(p, p2))
+	l1 = union(p, p1)
+	l2 = union(p, p2)
 	print("%s: calling %s on %s" % (sys.argv[0], command, l1))
 	if is_interesting(l1):
 		return dd(p, p1)
@@ -51,6 +52,12 @@ def dd(p, c):
 def main():
 	size_n = int(sys.argv[1])
 	global command
+	global dataDict
+	currentDirectory = os.getcwd()
+	with open(currentDirectory + '/' + 'dataDict.txt', 'r') as f:
+		data = f.read()
+		f.close()
+	dataDict = eval(data)
 	command = "is_interesting()"
 	c = list(range(0, size_n))
 	result = dd(list(), c)
