@@ -1,20 +1,16 @@
 #!/bin/bash
-#$current_dir/queue/
-for file in $*
-do
-    ./pngtest $file.png > junk.txt
-    OUTPUT=$(gcov *.c | tail -1)
-    #$file $OUTPUT >> testResult.txt
-    reg='[0-9]+\.[0-9]+'
-    [[ $OUTPUT =~ $reg ]]
-    echo ${BASH_REMATCH}
-    #echo $file.png $OUTPUT
-    #echo "--------------------------------"
+
+for file in $*; do
+  ./pngtest imgs/$file.png > junk.txt 2> error
+  OUTPUT=$(gcov *.c 2> error | tail -1)
 done
 rm *.gcda pngout.png
-rm junk.txt
-if [ ${BASH_REMATCH} == "23.02" ]; then 
+
+reg='[0-9]+\.[0-9]+'
+[[ $OUTPUT =~ $reg ]]
+echo ${BASH_REMATCH}
+
+if [ ${BASH_REMATCH} == "37.97" ]; then
     exit 1
 fi
 exit 0
-#return coverage
