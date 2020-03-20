@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 import os
 
@@ -14,11 +13,10 @@ def is_interesting(l):
 			sum += 1
 		cov = 0
 	print(sum)
-	if round(sum/10606 * 100, 2) >= 23.02:
+	if round(sum/10606 * 100, 2) >= 19.75:
 		print(sum/10606 * 100)
 		return 1
 	return 0
-
 
 def to_set(data):
 	try:
@@ -26,10 +24,8 @@ def to_set(data):
 	except TypeError:
 		return {data}
 
-
 def union(l1, l2):
 	return sorted(list(to_set(l1) | to_set(l2)))
-
 
 def dd(p, c):
 	print("%s: dd(p=%s, c=%s)" % (sys.argv[0], p, c))
@@ -48,13 +44,13 @@ def dd(p, c):
 	else:
 		return union(dd(union(p, p2), p1), dd(union(p, p1), p2))
 
-
 def main():
 	size_n = int(sys.argv[1])
+	filename = sys.argv[2]
 	global command
 	global dataDict
 	currentDirectory = os.getcwd()
-	with open(currentDirectory + '/' + 'dataDict.txt', 'r') as f:
+	with open(currentDirectory + '/' + filename, 'r') as f:
 		data = f.read()
 		f.close()
 	dataDict = eval(data)
@@ -62,7 +58,6 @@ def main():
 	c = list(range(0, size_n))
 	result = dd(list(), c)
 	print(result)
-
 
 if __name__== "__main__":
 	main()
