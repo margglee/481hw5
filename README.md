@@ -6,18 +6,18 @@ python3 ../hw5/delta.py 54 bash ../hw5/is-minimize.sh
 
 ### For a subset of 10 images (0-9)
 run-all.sh on entire subset gave 19.73% coverage
-delta.py/is-minimize.sh selected images [0, 4, 6]
-run-all.sh on [0, 4, 6] gave 19.73% coverage
-delta-min.py/dataDict10.txt selected images [0, 1, 2]
-run-all.sh on [0, 1, 2] gave 19.68% coverage
+\ndelta.py/is-minimize.sh selected images [0, 4, 6]
+\nrun-all.sh on [0, 4, 6] gave 19.73% coverage
+\ndelta-min.py/dataDict10.txt selected images [0, 1, 2]
+\nrun-all.sh on [0, 1, 2] gave 19.68% coverage
 
 
 ### For a subset of 20 images (0-19)
-run-all.sh on entire subset gave 19.75% coverage
-delta.py/is-minimize.sh selected images [0, 11]
-run-all.sh on [0, 11] gave 15.50% coverage
-delta-min.py/dataDict20.txt selected images [0, 1, 2, 4]
-run-all.sh on [0, 1, 2, 4] gave 19.72% coverage
+\nrun-all.sh on entire subset gave 19.75% coverage
+\ndelta.py/is-minimize.sh selected images [0, 11]
+\nrun-all.sh on [0, 11] gave 15.50% coverage
+\ndelta-min.py/dataDict20.txt selected images [0, 1, 2, 4]
+\nrun-all.sh on [0, 1, 2, 4] gave 19.72% coverage
 
 
 ### For a subset of 30 images (0-29)
