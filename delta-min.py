@@ -13,7 +13,7 @@ def is_interesting(l):
 			sum += 1
 		cov = 0
 	print(sum)
-	if round(sum/10606 * 100, 2) >= 19.75:
+	if round(sum/10606 * 100, 2) >= 37.97:
 		print(sum/10606 * 100)
 		return 1
 	return 0
